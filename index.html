@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FirstRep</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="header">
+    <h1>FirstRep</h1>
+    <p class="subtitle">Beginner workouts that rotate automatically—with real features.</p>
+  </header>
+
+  <main class="grid">
+    <!-- GENERATE -->
+    <section class="card">
+      <h2>Generate Workout</h2>
+
+      <form id="workoutForm" class="form">
+        <div class="two">
+          <label>
+            Days per week (1–6)
+            <input type="number" id="days" min="1" max="6" value="3" required />
+          </label>
+
+          <label>
+            Time per workout (minutes)
+            <input type="number" id="time" min="20" value="35" required />
+          </label>
+        </div>
+
+        <div class="two">
+          <label>
+            Sets per exercise
+            <select id="setsMode">
+              <option value="auto" selected>Auto (based on time)</option>
+              <option value="custom">Custom</option>
+            </select>
+          </label>
+
+          <label>
+            Custom sets (1–6)
+            <input type="number" id="customSets" min="1" max="6" value="3" disabled />
+          </label>
+        </div>
+
+        <div class="row">
+          <button type="submit">Generate</button>
+          <button type="button" id="resetRotationBtn" class="secondary">Reset Rotation</button>
+          <button type="button" id="clearAllBtn" class="secondary danger">Clear All Data</button>
+        </div>
+
+        <p id="rotationHint" class="hint"></p>
+        <p id="status" class="status"></p>
+      </form>
+
+      <div id="output"></div>
+    </section>
+
+    <!-- HISTORY -->
+    <section class="card">
+      <div class="row space-between">
+        <h2>Workout History</h2>
+        <div class="row">
+          <button type="button" id="exportBtn" class="secondary">Export</button>
+          <label class="fileLabel secondary">
+            Import
+            <input type="file" id="importFile" accept="application/json" hidden />
+          </label>
+        </div>
+      </div>
+      <div id="history"></div>
+    </section>
+
+    <!-- PRS -->
+    <section class="card">
+      <h2>Personal Records</h2>
+      <div id="prs"></div>
+    </section>
+
+    <!-- CHAT -->
+    <section class="card">
+      <div class="row space-between">
+        <h2>Workout Chat</h2>
+        <span class="badge" id="chatModeBadge">Offline Coach</span>
+      </div>
+
+      <p class="mini">
+        Ask anything while you train. This includes an offline coach by default.
+        If you want a real AI model later, there is an optional “API mode” in the code.
+      </p>
+
+      <div id="chatLog" class="chatLog"></div>
+
+      <div class="chatRow">
+        <input id="chatInput" type="text" placeholder="Ask a question (e.g., ‘How should my back feel on rows?’)" />
+        <button id="chatSendBtn">Send</button>
+      </div>
+
+      <p class="mini muted">
+        Note: This chat is stored locally in your browser.
+      </p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
